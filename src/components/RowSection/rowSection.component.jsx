@@ -17,7 +17,7 @@ function RowSection({ title, fetchUrl,isLargeRow }) {
 
     return (
         <div className="row">
-            <div>{title}</div>
+            <div className="row_title">{title}</div>
             <div className="row_posters">
                 {
                     movies.map((movie) => <img keys={movie.id} className={`row_poster ${isLargeRow && "row_posterLarge"}`} src={`${imgURL}${isLargeRow?movie.poster_path:movie.backdrop_path}`} alt={movie.name} />)
