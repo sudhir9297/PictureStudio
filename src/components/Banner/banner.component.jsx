@@ -2,31 +2,39 @@ import React, { useState, useEffect } from 'react'
 import axios from '../../services/axios'
 import requests from '../../services/requests'
 import './banner.style.css'
+
+import Carousel, { Dots } from '@brainhubeu/react-carousel';
+import '@brainhubeu/react-carousel/lib/style.css';
+
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 import YouTube from 'react-youtube';
 import movieTrailer from 'movie-trailer'
 
 function Banner() {
-    const [movie, setMovie] = useState([])
     const imgURL = 'http://image.tmdb.org/t/p/original'
+    const [movieList, setMovieList] = useState([])
+    const [value, setValue] = useState(0)
     const [trailerUrl, setTrailerUrl] = useState("")
 
     useEffect(() => {
         async function fetchData() {
-            const request = await axios.get(requests.fetchTVOriginals);
-            setMovie(request.data.results[Math.floor(Math.random() * request.data.results.length - 1)]);
+            const request2 = await axios.get(requests.fetchTVOriginals);
+            setMovieList(request2.data.results);
         }
         fetchData()
     }, [])
 
-    const handlePlay=()=>{
+    const handlePlay = (item) => {
         if (trailerUrl) {
             setTrailerUrl("")
         } else {
-            movieTrailer(movie?.original_title || "")
+            movieTrailer(item?.original_title || "")
                 .then(url => {
-                    console.log(url);
-                    const urlParams=new URLSearchParams(new URL(url).search)
-                    setTrailerUrl( urlParams.get("v"))
+                    const urlParams = new URLSearchParams(new URL(url).search)
+                    setTrailerUrl(urlParams.get("v"))
                 }).catch(err => {
                     console.log(err);
                 })
@@ -41,28 +49,70 @@ function Banner() {
         }
     }
 
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true
+    };
 
-    function truncate(str,n){
-        return str?.length>n?str.substr(0,n-1)+ "..." :str;
+
+    function truncate(str, n) {
+        return str?.length > n ? str.substr(0, n - 1) + "..." : str;
     }
+
+    function onChange(value) {
+        setValue(value)
+    }
+
     return (
         <div>
-            <header className="banner" style={{ backgroundSize: "cover", backgroundImage: `url(${imgURL}${movie?.backdrop_path})` }}>
-            <div className="banner_contents">
-                <hi className="banner_title">{movie?.title || movie?.name || movie?.original_name}</hi>
-                <div className="banner_buttons">
-                    <button className="banner_button" onClick={()=>handlePlay(movie)}>
-                        Play
-                    </button>
-                    <button className="banner_button">
-                        MyList
-                    </button>
-                </div>
-                <h1 className="banner_description">{truncate(movie?.overview,150)}</h1>
-            </div>
-            <div className="fade_bottom"/>
-        </header>
-        {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
+            {/* <Slider {...settings}>
+                {
+                    movieList.filter((item, idx) => idx < 5).map((item) => <header className="banner" style={{ backgroundSize: "cover", backgroundImage: `url(${imgURL}${item?.backdrop_path})` }}>
+                        <img className="backgroundImage" key={item.id} src={`${imgURL}${item?.backdrop_path}`} />
+                        <div className="banner_contents">
+                            <hi className="banner_title">{item?.title || item?.name || item?.original_name}</hi>
+                            <div className="banner_buttons">
+                                <button className="banner_button" onClick={() => handlePlay(item)}>
+                                    Play
+                        </button>
+                                <button className="banner_button">
+                                    MyList
+                        </button>
+                            </div>
+                            <h1 className="banner_description">{truncate(item?.overview, 150)}</h1>
+                        </div>
+                        <div className="fade_bottom" />
+                    </header>)
+                }
+            </Slider> */}
+            <Carousel autoPlay={4000}
+                animationSpeed={1000}
+                infinite
+                onChange={onChange}
+            >
+                {
+                    movieList.filter((item, idx) => idx < 5).map((item) => <header className="banner" style={{ backgroundSize: "cover", backgroundImage: `url(${imgURL}${item?.backdrop_path})` }}>
+                        <div className="banner_contents">
+                            <hi className="banner_title">{item?.title || item?.name || item?.original_name}</hi>
+                            <div className="banner_buttons">
+                                <button className="banner_button" onClick={() => handlePlay(item)}>
+                                    Play
+                        </button>
+                                <button className="banner_button">
+                                    MyList
+                        </button>
+                            </div>
+                            <h1 className="banner_description">{truncate(item?.overview, 150)}</h1>
+                        </div>
+                        <div className="fade_bottom" />
+                    </header>)
+                }
+            </Carousel>
+            {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
         </div>
     )
 }
