@@ -1,3 +1,3 @@
-module.exports={
-   tmdbApiKey:process.env.TMDB_API_KEY,
-}
+module.exports = {
+  tmdbApiKey: process.env.TMDB_API_KEY,
+};
