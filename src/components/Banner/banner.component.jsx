@@ -3,6 +3,8 @@ import axios from '../../services/axios'
 import requests from '../../services/requests'
 import './banner.style.css'
 
+import { AiFillStar } from "react-icons/ai";
+
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -75,19 +77,25 @@ function Banner() {
             <SliderWrapper>
                 <Slider {...settings}>
                     {
-                        movieList.filter((item, idx) => idx < 8).map((item) => <div>
+                        movieList.filter((item, idx) => idx < 3).map((item) => <div>
                             <div className="banner" style={{ backgroundSize: "cover", backgroundImage: `url(${imgURL}${item?.backdrop_path})` }}>
+                                <div className="banner_overlay" />
                                 <div className="banner_contents">
-                                    <hi className="banner_title">{item?.title || item?.name || item?.original_name}</hi>
+                                    <div className="content_details">
+                                        <AiFillStar color="#F4D204" size="16px" />
+                                        <div className="rating">{item?.vote_average}</div>
+                                        <div className="release_date">Release Date : {item?.release_date}</div>
+                                    </div>
+                                    <h1 className="banner_title">{item?.title || item?.name || item?.original_name}</h1>
+                                    <h1 className="banner_description">{truncate(item?.overview, 150)}</h1>
                                     <div className="banner_buttons">
                                         <button className="banner_button" onClick={() => handlePlay(item)}>
                                             Play
-                        </button>
+                                        </button>
                                         <button className="banner_button">
                                             MyList
-                        </button>
+                                        </button>
                                     </div>
-                                    <h1 className="banner_description">{truncate(item?.overview, 150)}</h1>
                                 </div>
                                 <div className="fade_bottom" />
                             </div>

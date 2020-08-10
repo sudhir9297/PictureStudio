@@ -4,15 +4,12 @@ import axios from '../../services/axios'
 import YouTube from 'react-youtube';
 import movieTrailer from 'movie-trailer'
 
-
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-
-
 function RowSection({ title, fetchUrl, isLargeRow }) {
-    const imgURL = 'http://image.tmdb.org/t/p/original'
+    const imgURL = 'http://image.tmdb.org/t/p/w500'
     const [movies, setMovies] = useState([]);
     const [trailerUrl, setTrailerUrl] = useState("")
 
@@ -51,8 +48,8 @@ function RowSection({ title, fetchUrl, isLargeRow }) {
         dots: false,
         arrows: false,
         speed: 500,
-        slidesToShow: `${isLargeRow}` == "undefined" ? 5 : 7,
-        slidesToScroll: `${isLargeRow}` == "undefined" ? 5 : 7
+        slidesToShow: `${isLargeRow}` === "undefined" ? 5 : 7,
+        slidesToScroll: `${isLargeRow}` === "undefined" ? 5 : 7
     };
 
     return (
@@ -61,7 +58,7 @@ function RowSection({ title, fetchUrl, isLargeRow }) {
             <div className="row_posters">
                 <Slider {...settings}>
                     {
-                        movies.map((movie) => <div className="row_poster"><img keys={movie.id} onClick={() => handleClick(movie)} className={`${isLargeRow}` == "undefined" ? "poster_image" : "row_posterLarge"} src={`${imgURL}${isLargeRow ? movie.poster_path : movie.backdrop_path}`} alt={movie.name} /></div>)
+                        movies.map((movie) => <div className="row_poster"><img keys={movie.id} onClick={() => handleClick(movie)} className={`${isLargeRow}` === "undefined" ? "poster_image" : "row_posterLarge"} src={`${imgURL}${isLargeRow ? movie.poster_path : movie.backdrop_path}`} alt={movie.name} /></div>)
                     }
                 </Slider>
             </div>

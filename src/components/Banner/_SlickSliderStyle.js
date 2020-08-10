@@ -215,8 +215,8 @@ const SliderWrapper = styled("div")`
   .slick-dots li {
     position: relative;
     display: inline-block;
-    width: 10px;
-    height: 10px;
+    width: 60px;
+    height: 4px;
     margin: 0 5px;
     padding: 0;
     cursor: pointer;
@@ -258,6 +258,7 @@ const SliderWrapper = styled("div")`
 
     width: 10px;
     height: 10px;
+    border: 1px solid blue;
 
     content: "•";
     text-align: center;
@@ -276,25 +277,26 @@ const SliderWrapper = styled("div")`
   /* Custom Slick Dots */
 
   .ft-slick__dots--custom {
-    height: 14px;
-    width: 14px;
+    height: 4px;
+    width: 60px;
     opacity: 0.3;
+    border-radius: 5px;
     background-color: #e5e7e9;
-    border-radius: 50%;
+
     position: relative;
   }
 
   .slick-dots li {
-    width: 14px;
-    margin: 5px;
+    width: 60px;
+    margin: 0 7px;
   }
 
   .slick-dots .slick-active {
-    width: 14px;
+    width: 60px;
   }
 
   .slick-dots .slick-active .ft-slick__dots--custom {
-    width: 14px;
+    width: 60px;
     top: 0px;
     opacity: 1;
     overflow: hidden;
