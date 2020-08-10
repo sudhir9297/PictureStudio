@@ -3,20 +3,20 @@ import axios from '../../services/axios'
 import requests from '../../services/requests'
 import './banner.style.css'
 
-import Carousel, { Dots } from '@brainhubeu/react-carousel';
-import '@brainhubeu/react-carousel/lib/style.css';
-
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import SliderWrapper from "./_SlickSliderStyle";
+
 
 import YouTube from 'react-youtube';
 import movieTrailer from 'movie-trailer'
 
+
+
 function Banner() {
     const imgURL = 'http://image.tmdb.org/t/p/original'
     const [movieList, setMovieList] = useState([])
-    const [value, setValue] = useState(0)
     const [trailerUrl, setTrailerUrl] = useState("")
 
     useEffect(() => {
@@ -55,7 +55,14 @@ function Banner() {
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        autoplay: true
+        autoplay: true,
+        arrows: false,
+        appendDots: dots => <ul>{dots}</ul>,
+        customPaging: i => (
+            <div className="ft-slick__dots--custom">
+                <div className="loading" />
+            </div>
+        )
     };
 
 
@@ -63,57 +70,35 @@ function Banner() {
         return str?.length > n ? str.substr(0, n - 1) + "..." : str;
     }
 
-    function onChange(value) {
-        setValue(value)
-    }
-
     return (
         <div>
-            {/* <Slider {...settings}>
-                {
-                    movieList.filter((item, idx) => idx < 5).map((item) => <header className="banner" style={{ backgroundSize: "cover", backgroundImage: `url(${imgURL}${item?.backdrop_path})` }}>
-                        <img className="backgroundImage" key={item.id} src={`${imgURL}${item?.backdrop_path}`} />
-                        <div className="banner_contents">
-                            <hi className="banner_title">{item?.title || item?.name || item?.original_name}</hi>
-                            <div className="banner_buttons">
-                                <button className="banner_button" onClick={() => handlePlay(item)}>
-                                    Play
+            <SliderWrapper>
+                <Slider {...settings}>
+                    {
+                        movieList.filter((item, idx) => idx < 8).map((item) => <div>
+                            <div className="banner" style={{ backgroundSize: "cover", backgroundImage: `url(${imgURL}${item?.backdrop_path})` }}>
+                                <div className="banner_contents">
+                                    <hi className="banner_title">{item?.title || item?.name || item?.original_name}</hi>
+                                    <div className="banner_buttons">
+                                        <button className="banner_button" onClick={() => handlePlay(item)}>
+                                            Play
                         </button>
-                                <button className="banner_button">
-                                    MyList
+                                        <button className="banner_button">
+                                            MyList
                         </button>
+                                    </div>
+                                    <h1 className="banner_description">{truncate(item?.overview, 150)}</h1>
+                                </div>
+                                <div className="fade_bottom" />
                             </div>
-                            <h1 className="banner_description">{truncate(item?.overview, 150)}</h1>
                         </div>
-                        <div className="fade_bottom" />
-                    </header>)
-                }
-            </Slider> */}
-            <Carousel autoPlay={4000}
-                animationSpeed={1000}
-                infinite
-                onChange={onChange}
-            >
-                {
-                    movieList.filter((item, idx) => idx < 5).map((item) => <header className="banner" style={{ backgroundSize: "cover", backgroundImage: `url(${imgURL}${item?.backdrop_path})` }}>
-                        <div className="banner_contents">
-                            <hi className="banner_title">{item?.title || item?.name || item?.original_name}</hi>
-                            <div className="banner_buttons">
-                                <button className="banner_button" onClick={() => handlePlay(item)}>
-                                    Play
-                        </button>
-                                <button className="banner_button">
-                                    MyList
-                        </button>
-                            </div>
-                            <h1 className="banner_description">{truncate(item?.overview, 150)}</h1>
-                        </div>
-                        <div className="fade_bottom" />
-                    </header>)
-                }
-            </Carousel>
+
+                        )
+                    }
+                </Slider>
+            </SliderWrapper>
             {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
-        </div>
+        </div >
     )
 }
 

@@ -4,6 +4,13 @@ import axios from '../../services/axios'
 import YouTube from 'react-youtube';
 import movieTrailer from 'movie-trailer'
 
+
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+
+
 function RowSection({ title, fetchUrl, isLargeRow }) {
     const imgURL = 'http://image.tmdb.org/t/p/original'
     const [movies, setMovies] = useState([]);
@@ -24,9 +31,8 @@ function RowSection({ title, fetchUrl, isLargeRow }) {
         } else {
             movieTrailer(movie?.original_title || "")
                 .then(url => {
-                    console.log(url);
-                    const urlParams=new URLSearchParams(new URL(url).search)
-                    setTrailerUrl( urlParams.get("v"))
+                    const urlParams = new URLSearchParams(new URL(url).search)
+                    setTrailerUrl(urlParams.get("v"))
                 }).catch(err => {
                     console.log(err);
                 })
@@ -41,13 +47,23 @@ function RowSection({ title, fetchUrl, isLargeRow }) {
         }
     }
 
+    const settings = {
+        dots: false,
+        arrows: false,
+        speed: 500,
+        slidesToShow: `${isLargeRow}` == "undefined" ? 5 : 7,
+        slidesToScroll: `${isLargeRow}` == "undefined" ? 5 : 7
+    };
+
     return (
         <div className="row">
             <div className="row_title">{title}</div>
             <div className="row_posters">
-                {
-                    movies.map((movie) => <img keys={movie.id} onClick={() => handleClick(movie)} className={`row_poster ${isLargeRow && "row_posterLarge"}`} src={`${imgURL}${isLargeRow ? movie.poster_path : movie.backdrop_path}`} alt={movie.name} />)
-                }
+                <Slider {...settings}>
+                    {
+                        movies.map((movie) => <div className="row_poster"><img keys={movie.id} onClick={() => handleClick(movie)} className={`${isLargeRow}` == "undefined" ? "poster_image" : "row_posterLarge"} src={`${imgURL}${isLargeRow ? movie.poster_path : movie.backdrop_path}`} alt={movie.name} /></div>)
+                    }
+                </Slider>
             </div>
             {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
         </div>
