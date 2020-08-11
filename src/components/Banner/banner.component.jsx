@@ -23,8 +23,8 @@ function Banner() {
 
     useEffect(() => {
         async function fetchData() {
-            const request2 = await axios.get(requests.fetchTVOriginals);
-            setMovieList(request2.data.results);
+            const request = await axios.get(requests.fetchTrending);
+            setMovieList(request.data.results);
         }
         fetchData()
     }, [])
@@ -77,7 +77,7 @@ function Banner() {
             <SliderWrapper>
                 <Slider {...settings}>
                     {
-                        movieList.filter((item, idx) => idx < 3).map((item) => <div>
+                        movieList.filter((item, idx) => idx < 5).map((item) => <div>
                             <div className="banner" style={{ backgroundSize: "cover", backgroundImage: `url(${imgURL}${item?.backdrop_path})` }}>
                                 <div className="banner_overlay" />
                                 <div className="banner_contents">
