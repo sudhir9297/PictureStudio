@@ -9,14 +9,18 @@ function Home() {
         <div>
             <Banner />
             <RowSection
+                title="Trending Now"
+                fetchUrl={requests.fetchTrending}
+                isLargeRow
+            />
+
+            <RowSection
                 title="Watch next TV and movies"
                 fetchUrl={requests.fetchTVOriginals}
             />
-            <RowSection title="Trending Now" fetchUrl={requests.fetchTrending} />
             <RowSection
                 title="Top Rated"
                 fetchUrl={requests.fetchTopRated}
-                isLargeRow
             />
             <RowSection title="Action Movie" fetchUrl={requests.fetchActionMovie} />
             <RowSection title="Horror Movie" fetchUrl={requests.fetchHorrorMovie} />

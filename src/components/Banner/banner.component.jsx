@@ -10,6 +10,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import SliderWrapper from "./_SlickSliderStyle";
 
+import CustomButton from '../layouts/CustomButton/CustomButtons.component'
+
 
 import YouTube from 'react-youtube';
 import movieTrailer from 'movie-trailer'
@@ -89,12 +91,8 @@ function Banner() {
                                     <h1 className="banner_title">{item?.title || item?.name || item?.original_name}</h1>
                                     <h1 className="banner_description">{truncate(item?.overview, 150)}</h1>
                                     <div className="banner_buttons">
-                                        <button className="banner_button" onClick={() => handlePlay(item)}>
-                                            Play
-                                        </button>
-                                        <button className="banner_button">
-                                            MyList
-                                        </button>
+                                        <CustomButton title="Play" handlePlays={() => handlePlay(item)} />
+                                        <CustomButton title="MyList" handlePlays={() => null} />
                                     </div>
                                 </div>
                                 <div className="fade_bottom" />

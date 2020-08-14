@@ -1,0 +1,23 @@
+.banner_button {
+  cursor: pointer;
+  color: #fff;
+  outline: none;
+  border: none;
+  border-radius: 50px;
+  font-weight: 700;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin-right: 1rem;
+  padding-top: 0.6rem;
+  background-color: rgb(0, 0, 0);
+  padding-bottom: 0.5rem;
+  transition: all 0.3s;
+}
+
+.banner_button:hover {
+  color: #000;
+  background-color: #ff0d1e;
+  box-shadow: 0 0 15px #ff0d1e;
+  transition: all 0.3s;
+  transform: scale(1.1);
+}

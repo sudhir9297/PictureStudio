@@ -11,37 +11,18 @@
   display: none;
 }
 
+.section_title_container {
+  margin: 20px;
+  display: flex;
+  padding: 20px 0;
+  border-bottom: 2px solid #4a4a6980;
+}
+
+.row_logo {
+  margin-right: 10px;
+}
+
 .row_title {
   font-size: 20px;
-  font-weight: bold;
-  margin: 20px 10px 0 30px;
-}
-
-.row_poster {
-  width: 100%;
-  height: 100%;
-}
-
-.poster_image {
-  width: 250px;
-  height: 100%;
-  border-radius: 3px;
-  object-fit: contain;
-  transition: transform 450ms;
-}
-
-.poster_image:hover {
-  transform: scale(1.08);
-}
-
-.row_posterLarge {
-  height: 250px;
-  width: auto;
-  border-radius: 3px;
-  object-fit: contain;
-  transition: transform 450ms;
-}
-
-.row_posterLarge:hover {
-  transform: scale(1.09);
+  font-weight: 700;
 }
