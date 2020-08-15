@@ -56,7 +56,6 @@ function RowSection({ title, fetchUrl, isLargeRow }) {
         }
     }
 
-
     return (
         <div className="row">
             <div className="section_title_container">

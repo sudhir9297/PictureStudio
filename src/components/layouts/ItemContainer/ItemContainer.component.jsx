@@ -5,6 +5,11 @@ import { AiFillStar } from "react-icons/ai";
 
 export const ItemContainer = ({ movie, isLargeRow, handleClicks }) => {
     const imgURL = 'http://image.tmdb.org/t/p/w500'
+
+    function truncate(str, n) {
+        return str?.length > n ? str.substr(0, n - 1) + "..." : str;
+    }
+
     return (
         <div className="item_container">
             <div className="row_poster" onClick={handleClicks}>
@@ -12,11 +17,11 @@ export const ItemContainer = ({ movie, isLargeRow, handleClicks }) => {
             </div>
             <div className="row_poster_content">
                 <div className="item_name">
-                    {movie?.title || movie?.original_title}
+                    {movie.name ? truncate(movie?.name, 15) : truncate(movie?.original_title, 15)}
                 </div>
                 <div className="item_content">
                     <div className="item_date">
-                        {movie?.release_date}
+                        {movie.release_date ? movie.release_date : movie.first_air_date}
                     </div>
                     <div className="rating_container">
                         <AiFillStar color="#F4D204" size="16px" />
