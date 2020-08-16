@@ -1,0 +1,25 @@
+.row_container {
+  color: #fff;
+}
+
+.row_title_container {
+  margin: 40px;
+  display: flex;
+  padding: 20px 0;
+  border-bottom: 2px solid #4a4a6980;
+}
+
+.row_title {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.row_logo {
+  margin-right: 10px;
+}
+
+.item_container2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
