@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import './rowSection.style.css'
+import './rowSection.style.scss'
 import axios from '../../services/axios'
 import YouTube from 'react-youtube';
 import movieTrailer from 'movie-trailer'
@@ -11,6 +11,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import { ItemContainer } from '../layouts/ItemContainer/ItemContainer.component'
+
 
 function RowSection({ title, fetchUrl, isLargeRow }) {
     const [movies, setMovies] = useState([]);
@@ -24,12 +25,14 @@ function RowSection({ title, fetchUrl, isLargeRow }) {
         }
     }
 
+
     const settings = {
         dots: false,
-        arrows: false,
+        arrows: true,
         speed: 500,
+        infinite: false,
         slidesToShow: `${isLargeRow}` === "undefined" ? 5 : 7,
-        slidesToScroll: `${isLargeRow}` === "undefined" ? 5 : 7
+        slidesToScroll: `${isLargeRow}` === "undefined" ? 5 : 7,
     };
 
     useEffect(() => {
@@ -40,6 +43,7 @@ function RowSection({ title, fetchUrl, isLargeRow }) {
         }
         fetchData();
     }, [])
+
 
     const handleClick = (movie) => {
 
@@ -58,9 +62,9 @@ function RowSection({ title, fetchUrl, isLargeRow }) {
 
     return (
         <div className="row">
-            <div className="section_title_container">
-                <FiTrendingUp className="row_logo" size="24px" />
+            <div className="row_title_container">
                 <div className="row_title">{title}</div>
+                <span />
             </div>
             <div className="row_posters">
                 <Slider {...settings}>

@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import './rowSection2.styles.scss'
 import axios from '../../services/axios'
-import { FiTrendingUp } from "react-icons/fi";
 import { ItemContainer } from '../layouts/ItemContainer/ItemContainer.component'
 
 
 
-const RowSection2 = ({ title, fetchUrl, isLargeRow, logo }) => {
+const RowSection2 = ({ title, fetchUrl, isLargeRow }) => {
     const [moviesList, setMoviesList] = useState([]);
 
     useEffect(() => {
@@ -22,8 +21,8 @@ const RowSection2 = ({ title, fetchUrl, isLargeRow, logo }) => {
     return (
         <div className="row_container">
             <div className="row_title_container">
-                <FiTrendingUp className="row_logo" size="24px" />
                 <div className="row_title">{title}</div>
+                <span />
             </div>
             <div className="item_container2">
                 {
