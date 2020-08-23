@@ -1,6 +1,8 @@
 import React from 'react'
 import './ItemContainer.style.scss'
 import { AiFillStar } from "react-icons/ai";
+import { Link } from 'react-router-dom'
+
 
 
 export const ItemContainer = ({ movie, isLargeRow, handleClicks }) => {
@@ -11,7 +13,10 @@ export const ItemContainer = ({ movie, isLargeRow, handleClicks }) => {
     }
 
     return (
-        <div className="item_container">
+        <Link to={{
+            pathname: "/details",
+            state: { movie }
+        }} className="item_container" >
             <div className="row_poster" onClick={handleClicks}>
                 <img keys={movie.id} className={`${isLargeRow}` === "undefined" ? "poster_image" : "row_posterLarge"} src={`${imgURL}${isLargeRow ? movie.poster_path : movie.backdrop_path}`} alt={movie.name} />
             </div>
@@ -29,6 +34,6 @@ export const ItemContainer = ({ movie, isLargeRow, handleClicks }) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </Link>
     )
 }

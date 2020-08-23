@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import './rowSection.style.scss'
 import axios from '../../services/axios'
-import YouTube from 'react-youtube';
+// import YouTube from 'react-youtube';
 import movieTrailer from 'movie-trailer'
 
-import { FiTrendingUp } from "react-icons/fi";
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -17,13 +16,13 @@ function RowSection({ title, fetchUrl, isLargeRow }) {
     const [movies, setMovies] = useState([]);
     const [trailerUrl, setTrailerUrl] = useState("")
 
-    const opts = {
-        height: "390",
-        width: "100%",
-        playerVars: {
-            autoplay: 1
-        }
-    }
+    // const opts = {
+    //     height: "390",
+    //     width: "100%",
+    //     playerVars: {
+    //         autoplay: 1
+    //     }
+    // }
 
 
     const settings = {
@@ -47,17 +46,17 @@ function RowSection({ title, fetchUrl, isLargeRow }) {
 
     const handleClick = (movie) => {
 
-        if (trailerUrl) {
-            setTrailerUrl("")
-        } else {
-            movieTrailer(movie?.original_title || "")
-                .then(url => {
-                    const urlParams = new URLSearchParams(new URL(url).search)
-                    setTrailerUrl(urlParams.get("v"))
-                }).catch(err => {
-                    console.log(err);
-                })
-        }
+        // if (trailerUrl) {
+        //     setTrailerUrl("")
+        // } else {
+        //     movieTrailer(movie?.original_title || "")
+        //         .then(url => {
+        //             const urlParams = new URLSearchParams(new URL(url).search)
+        //             setTrailerUrl(urlParams.get("v"))
+        //         }).catch(err => {
+        //             console.log(err);
+        //         })
+        // }
     }
 
     return (
