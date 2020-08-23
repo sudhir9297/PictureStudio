@@ -5,7 +5,6 @@ import RowSection2 from "../../components/RowSection2/rowSection2.component"
 import Banner from "../../components/Banner/banner.component.jsx";
 import requests from "../../services/requests";
 
-
 function Home() {
     return (
         <div >
@@ -43,6 +42,7 @@ function Home() {
                 isLargeRow
             />
             <RowSection title="Comedy Movie" fetchUrl={requests.fetchComedyMovie} /> */}
+
         </div>
     )
 }

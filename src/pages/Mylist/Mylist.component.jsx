@@ -1,5 +1,5 @@
 import React from 'react'
-import './Mylist.styles.css'
+import './Mylist.styles.scss'
 
 function Mylist() {
     return (

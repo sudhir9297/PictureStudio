@@ -1,5 +1,5 @@
 import React from 'react'
-import './Details.styles.css'
+import './Details.styles.scss'
 
 function Details(props) {
     //const { items } = props

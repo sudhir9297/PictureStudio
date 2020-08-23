@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './navbar.style.css'
+import './navbar.style.scss'
 import { FiSearch, FiChevronDown } from "react-icons/fi";
 
 import { Link } from 'react-router-dom';

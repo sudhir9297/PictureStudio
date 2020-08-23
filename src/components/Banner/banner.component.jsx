@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from '../../services/axios'
 import requests from '../../services/requests'
-import './banner.style.css'
+import './banner.style.scss'
 
 import { AiFillStar } from "react-icons/ai";
 
