@@ -9,11 +9,10 @@ https://picture-studio-cad39.web.app/
 ### Functionality this App Includes are
 - Automatic Fetching based on Trending, popular, upcoming etc
 -  Video Player to play trailer of the movie
+- Detail page about the movie
 
 #### TODO to improve
 - Searching based on Keyword
-- Details about the movie
-- as images we're fetching are high resolution we need to compress it
 - Lock orientation to portrait mode
 
 
