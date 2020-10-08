@@ -4,7 +4,7 @@ A movie Trailer watching Website built using React JS.
 ### You can Checkout here 
 https://picture-studio-cad39.web.app/
 
-<img  src="https://user-images.githubusercontent.com/19578447/89715724-54a36300-d9c5-11ea-939f-145a37ef194d.png">
+<img  src="https://user-images.githubusercontent.com/19578447/95452110-65049980-0986-11eb-9fa6-a24241e3efab.png">
 
 ### Functionality this App Includes are
 - Automatic Fetching based on Trending, popular, upcoming etc
