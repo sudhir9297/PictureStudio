@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import axios from "../../services/axios";
 import requests from "../../services/requests";
 import "./banner.style.scss";

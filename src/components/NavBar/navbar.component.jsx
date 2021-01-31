@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./navbar.style.scss";
-import { FiSearch, FiChevronDown } from "react-icons/fi";
 
-import { Link } from "react-router-dom";
+import {Link} from 'react-router-dom'
 
 function Navbar() {
   const [show, handleShow] = useState([]);
@@ -23,12 +22,16 @@ function Navbar() {
   }, []);
 
   return (
+    
     <div className={`nav ${show && "nav_black"}`}>
+      <Link to="/">
         <img
-          className="nav_logo"
-          src={process.env.PUBLIC_URL + "/PictureStudio.png"}
-          alt="MovieHub Logo"
-        />
+            className="nav_logo"
+            src={process.env.PUBLIC_URL + "/PictureStudio.png"}
+            alt="MovieHub Logo"
+          />
+      </Link>
+        
     </div>
   );
 }

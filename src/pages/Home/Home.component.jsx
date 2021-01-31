@@ -18,12 +18,10 @@ const Home=()=> {
             <RowSection2 title="Top Rated"
                 fetchUrl={requests.fetchTopRated}
                 isLargeRow
-               
             />
             <RowSection2 title="TV Originals"
                 fetchUrl={requests.fetchTVOriginals}
                 isLargeRow
-                
             />
             <RowSection
                 title="Watch next TV and movies"
