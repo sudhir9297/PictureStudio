@@ -14,16 +14,6 @@ import { ItemContainer } from '../layouts/ItemContainer/ItemContainer.component'
 
 function RowSection({ title, fetchUrl, isLargeRow }) {
     const [movies, setMovies] = useState([]);
-    const [trailerUrl, setTrailerUrl] = useState("")
-
-    // const opts = {
-    //     height: "390",
-    //     width: "100%",
-    //     playerVars: {
-    //         autoplay: 1
-    //     }
-    // }
-
 
     const settings = {
         dots: false,
@@ -43,22 +33,6 @@ function RowSection({ title, fetchUrl, isLargeRow }) {
         fetchData();
     }, [])
 
-
-    const handleClick = (movie) => {
-
-        // if (trailerUrl) {
-        //     setTrailerUrl("")
-        // } else {
-        //     movieTrailer(movie?.original_title || "")
-        //         .then(url => {
-        //             const urlParams = new URLSearchParams(new URL(url).search)
-        //             setTrailerUrl(urlParams.get("v"))
-        //         }).catch(err => {
-        //             console.log(err);
-        //         })
-        // }
-    }
-
     return (
         <div className="row">
             <div className="row_title_container">
@@ -68,11 +42,11 @@ function RowSection({ title, fetchUrl, isLargeRow }) {
             <div className="row_posters">
                 <Slider {...settings}>
                     {
-                        movies.map((movie) => <ItemContainer movie={movie} isLargeRow={isLargeRow ? isLargeRow : undefined} handleClicks={() => handleClick(movie)} />)
+                        movies.map((movie) => <ItemContainer movie={movie} isLargeRow={isLargeRow ? isLargeRow : undefined}/>)
                     }
                 </Slider>
             </div>
-            {/* {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />} */}
+
         </div>
     )
 }

@@ -16,8 +16,9 @@
   }
 }
 
+
 .row_title {
-  font-size: 26px;
+  font-size: 28px;
   padding: 0 20px;
   width: fit-content;
   clear: both;
@@ -33,5 +34,6 @@
 .item_container2 {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
+  margin: 30px;
 }
